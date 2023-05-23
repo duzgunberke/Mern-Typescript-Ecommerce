@@ -29,7 +29,7 @@ export default function SignupPage() {
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match')
+      toast.error('Şifreler uyuşmuyor')
       return
     }
     try {

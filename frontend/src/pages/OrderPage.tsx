@@ -145,7 +145,7 @@ export default function OrderPage() {
               </Card.Text>
               {order.isDelivered ? (
                 <MessageBox variant="success">
-                  Delivered at {order.deliveredAt}
+                  Teslim Edildi {order.deliveredAt}
                 </MessageBox>
               ) : (
                 <MessageBox variant="warning">Teslim Edilmedi</MessageBox>
@@ -186,7 +186,7 @@ export default function OrderPage() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>${item.price}</Col>
+                      <Col md={3}>₺{item.price}</Col>
                     </Row>
                   </ListGroup.Item>
                 ))}
@@ -220,7 +220,7 @@ export default function OrderPage() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong> Order Total</strong>
+                      <strong> Sipariş Toplam</strong>
                     </Col>
                     <Col>
                       <strong>₺{order.totalPrice.toFixed(2)}</strong>

@@ -13,13 +13,13 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>Tablolar</h1>
       {isLoading ? (
         <LoadingBox />
       ) : error ? (
         <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
       ) : !summary ? (
-        <MessageBox variant="danger">Summary not found</MessageBox>
+        <MessageBox variant="danger">Özet bulunamadı</MessageBox>
       ) : (
         <>
           <Row>
@@ -31,7 +31,7 @@ export default function DashboardPage() {
                       ? summary.users[0].numUsers
                       : 0}
                   </Card.Title>
-                  <Card.Text> Users</Card.Text>
+                  <Card.Text> Kullanıcılar</Card.Text>
                 </Card.Body>
               </Card>
             </Col>

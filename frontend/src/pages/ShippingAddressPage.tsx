@@ -58,15 +58,15 @@ export default function ShippingAddressPage() {
   return (
     <div>
       <Helmet>
-        <title>Shipping Address</title>
+        <title>Gönderim Adresi</title>
       </Helmet>
 
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
-        <h1 className="my-3">Shipping Address</h1>
+        <h1 className="my-3">Gönderim Adresi</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
-            <Form.Label>Full Name</Form.Label>
+            <Form.Label>Adınız Soyadınız</Form.Label>
             <Form.Control
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -74,7 +74,7 @@ export default function ShippingAddressPage() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="address">
-            <Form.Label>Address</Form.Label>
+            <Form.Label>Ayrıntılı Adres</Form.Label>
             <Form.Control
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -98,7 +98,7 @@ export default function ShippingAddressPage() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="country">
-            <Form.Label>Country</Form.Label>
+            <Form.Label>Telefon</Form.Label>
             <Form.Control
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -126,7 +126,7 @@ export default function ShippingAddressPage() {
 
           <div className="mb-3">
             <Button variant="primary" type="submit">
-              Continue
+              Devam Et
             </Button>
           </div>
         </Form>

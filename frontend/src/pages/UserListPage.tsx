@@ -18,11 +18,11 @@ export default function UserListPage() {
     useDeleteUserMutation()
 
   const deleteHandler = async (id: string) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('Silmek istediğinize emin misiniz?')) {
       try {
         deleteUser(id)
         refetch()
-        toast.success('Order deleted successfully')
+        toast.success('Başarıyla silindi')
       } catch (err) {
         toast.error(getError(err as ApiError))
       }
@@ -65,7 +65,7 @@ export default function UserListPage() {
                     variant="light"
                     onClick={() => navigate(`/admin/user/${user._id}`)}
                   >
-                    Edit
+                    Düzenle
                   </Button>
                   &nbsp;
                   <Button
@@ -73,7 +73,7 @@ export default function UserListPage() {
                     variant="light"
                     onClick={() => deleteHandler(user._id)}
                   >
-                    Delete
+                    Sil
                   </Button>
                 </td>
               </tr>

@@ -85,7 +85,7 @@ export default function CartPage() {
                         <i className="fas fa-plus-circle"></i>
                       </Button>
                     </Col>
-                    <Col md={3}>${item.price}</Col>
+                    <Col md={3}>₺{item.price}</Col>
                     <Col md={2}>
                       <Button
                         onClick={() => removeItemHandler(item)}

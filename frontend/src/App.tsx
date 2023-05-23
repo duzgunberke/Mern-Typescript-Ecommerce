@@ -230,7 +230,7 @@ function App() {
         </Container>
       </main>
       <footer>
-        <div className="text-center">Copyright © <a style={{ background: 'linear-gradient(to left, red, black, red)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'rainbow 5s ease-in-out infinite' }}>Viveven</a> {new Date().getFullYear()} Tüm Hakları Saklıdır.  </div>
+        <div className="text-center">Copyright © <a href='https://www.viveven.com/' style={{ background: 'linear-gradient(to left, red, black, red)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'rainbow 5s ease-in-out infinite' }}>Viveven</a> {new Date().getFullYear()} Tüm Hakları Saklıdır.  </div>
       </footer>
     </div>
   )

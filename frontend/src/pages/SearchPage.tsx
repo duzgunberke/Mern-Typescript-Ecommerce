@@ -17,15 +17,15 @@ import {
 
 const prices = [
   {
-    name: '$1 to $50',
+    name: '₺1 to ₺50',
     value: '1-50',
   },
   {
-    name: '$51 to $200',
+    name: '₺51 to ₺200',
     value: '51-200',
   },
   {
-    name: '$201 to $1000',
+    name: '₺201 to ₺1000',
     value: '201-1000',
   },
 ]
@@ -102,7 +102,7 @@ export default function SearchPage() {
   return (
     <div>
       <Helmet>
-        <title>Search Products</title>
+        <title>Ürün Ara</title>
       </Helmet>
       <Row>
         <Col md={3}>
@@ -114,7 +114,7 @@ export default function SearchPage() {
                   className={'all' === category ? 'text-bold' : ''}
                   to={getFilterUrl({ category: 'all' })}
                 >
-                  Any
+                  Hepsi
                 </Link>
               </li>
 
@@ -139,14 +139,14 @@ export default function SearchPage() {
             </ul>
           </div>
           <div>
-            <h3>Price</h3>
+            <h3>Ücret</h3>
             <ul>
               <li>
                 <Link
                   className={'all' === price ? 'text-bold' : ''}
                   to={getFilterUrl({ price: 'all' })}
                 >
-                  Any
+                  Hepsi
                 </Link>
               </li>
               {prices.map((p) => (
@@ -162,7 +162,7 @@ export default function SearchPage() {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Review</h3>
+            <h3>Ortalama kullanıcı puanı</h3>
             <ul>
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -198,7 +198,7 @@ export default function SearchPage() {
                 <Col md={6}>
                   <div>
                     {data!.countProducts === 0 ? 'No' : data!.countProducts}{' '}
-                    Results
+                    Sonuçlar
                     {query !== 'all' && ' : ' + query}
                     {category !== 'all' && ' : ' + category}
                     {price !== 'all' && ' : Price ' + price}
@@ -217,22 +217,22 @@ export default function SearchPage() {
                   </div>
                 </Col>
                 <Col className="text-end">
-                  Sort by{' '}
+                  Sırala {' '}
                   <select
                     value={order}
                     onChange={(e) => {
                       navigate(getFilterUrl({ order: e.target.value }))
                     }}
                   >
-                    <option value="newest">Newest Arrivals</option>
-                    <option value="lowest">Price: Low to High</option>
-                    <option value="highest">Price: High to Low</option>
-                    <option value="toprated">Avg. Customer Reviews</option>
+                    <option value="newest">Yeni Eklenen</option>
+                    <option value="lowest">Fiyat düşükten yükseğe</option>
+                    <option value="highest">Fiyat yüksekten düşüğe</option>
+                    <option value="toprated">Kullanıcı yorumları</option>
                   </select>
                 </Col>
               </Row>
               {data!.products.length === 0 && (
-                <MessageBox>No Product Found</MessageBox>
+                <MessageBox>Ürün bulunamadı</MessageBox>
               )}
 
               <Row>

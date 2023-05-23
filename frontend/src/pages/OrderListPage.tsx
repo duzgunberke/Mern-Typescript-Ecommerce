@@ -17,11 +17,11 @@ export default function OrderListPage() {
     useDeleteOrderMutation()
 
   const deleteHandler = async (id: string) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('Silmek istediğinize emin misiniz?')) {
       try {
         deleteOrder(id)
         refetch()
-        toast.success('Order deleted successfully')
+        toast.success('Sipariş başarıyla silindi')
       } catch (err) {
         toast.error(getError(err as ApiError))
       }

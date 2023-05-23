@@ -179,7 +179,7 @@ function ProductPage() {
         <h2 ref={reviewsRef}>Yorumlar</h2>
         <div className="mb-3">
           {product.reviews.length === 0 && (
-            <MessageBox>Him yorum yok</MessageBox>
+            <MessageBox>Hiç yorum yok</MessageBox>
           )}
         </div>
         <ListGroup>
@@ -195,7 +195,7 @@ function ProductPage() {
         <div className="my-3">
           {userInfo ? (
             <form onSubmit={submitHandler}>
-              <h2>Write a customer review</h2>
+              <h2>Müşteri Yorumu</h2>
               <Form.Group className="mb-3" controlId="rating">
                 <Form.Label>Rating</Form.Label>
                 <Form.Select
@@ -218,7 +218,7 @@ function ProductPage() {
               >
                 <Form.Control
                   as="textarea"
-                  placeholder="Leave a comment here"
+                  placeholder="Yorumunuzu bırakın"
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                 />
@@ -233,11 +233,11 @@ function ProductPage() {
             </form>
           ) : (
             <MessageBox>
-              Please{' '}
+              Lütfen{' '}
               <Link to={`/signin?redirect=/product/${product.slug}`}>
-                Sign In
+                Giriş Yapın
               </Link>{' '}
-              to write a review
+              yorum yazabilmek için
             </MessageBox>
           )}
         </div>

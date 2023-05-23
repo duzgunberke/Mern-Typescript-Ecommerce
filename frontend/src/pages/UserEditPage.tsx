@@ -55,9 +55,9 @@ export default function UserEditPage() {
   return (
     <Container className="small-container">
       <Helmet>
-        <title>Edit User ${userId}</title>
+        <title>Kullanıcı Güncelle ${userId}</title>
       </Helmet>
-      <h1>Edit User {userId}</h1>
+      <h1>Kullanıcı Güncelle {userId}</h1>
 
       {isLoading ? (
         <LoadingBox></LoadingBox>

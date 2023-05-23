@@ -49,9 +49,9 @@ export default function SigninPage() {
   return (
     <Container className="small-container">
       <Helmet>
-        <title>Sign In</title>
+        <title>Giriş Yap</title>
       </Helmet>
-      <h1 className="my-3">Sign In</h1>
+      <h1 className="my-3">Giriş Yap</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -62,7 +62,7 @@ export default function SigninPage() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Şifre</Form.Label>
           <Form.Control
             type="password"
             required
@@ -71,13 +71,13 @@ export default function SigninPage() {
         </Form.Group>
         <div className="mb-3">
           <Button disabled={isLoading} type="submit">
-            Sign In
+            Giriş Yap
           </Button>
           {isLoading && <LoadingBox />}
         </div>
         <div className="mb-3">
-          New customer?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
+          Yeni müşteri misiniz?{' '}
+          <Link to={`/signup?redirect=${redirect}`}>Hesap Oluşturun</Link>
         </div>
       </Form>
     </Container>
