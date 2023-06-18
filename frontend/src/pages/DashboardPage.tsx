@@ -62,7 +62,7 @@ export default function DashboardPage() {
             </Col>
           </Row>
           <div className="my-3">
-            <h2>Sales</h2>
+            <h2>Satışlar</h2>
             {summary.dailyOrders.length === 0 ? (
               <MessageBox>Satış Yok</MessageBox>
             ) : (

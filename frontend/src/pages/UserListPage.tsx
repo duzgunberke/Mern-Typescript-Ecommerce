@@ -46,10 +46,10 @@ export default function UserListPage() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
+              <th>Adı Soyadı</th>
+              <th>Email</th>
               <th>IS ADMIN</th>
-              <th>ACTIONS</th>
+              <th>Aksiyonlar</th>
             </tr>
           </thead>
           <tbody>

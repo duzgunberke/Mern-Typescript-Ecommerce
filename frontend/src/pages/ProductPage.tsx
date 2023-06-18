@@ -197,7 +197,7 @@ function ProductPage() {
             <form onSubmit={submitHandler}>
               <h2>Müşteri Yorumu</h2>
               <Form.Group className="mb-3" controlId="rating">
-                <Form.Label>Rating</Form.Label>
+                <Form.Label>Değerlendirme</Form.Label>
                 <Form.Select
                   aria-label="Rating"
                   value={rating}

@@ -152,7 +152,7 @@ function App() {
                 className="nav-link header-link p-1"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
-                <i className="fas fa-bars"></i> Hepsi
+                <i className="fas fa-bars"></i> Kategoriler
               </Link>
               {['Bugüne Özel'].map((x) => (
                 <Link
