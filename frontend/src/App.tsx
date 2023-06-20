@@ -75,7 +75,7 @@ function App() {
                   <i
                     className={mode === 'light' ? 'fa fa-sun' : 'fa fa-moon'}
                   ></i>{' '}
-                  {mode === 'light' ? 'Light' : 'Dark'}
+                  {mode === 'light' ? 'Aydınlık' : 'Karanlık'}
                 </Link>
 
                 {userInfo ? (
