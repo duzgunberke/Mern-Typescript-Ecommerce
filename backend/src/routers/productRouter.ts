@@ -5,20 +5,20 @@ import { Product, ProductModel } from '../models/productModel'
 
 export const productRouter = express.Router()
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 30
 
 productRouter.get(
   '/',
   asyncHandler(async (req, res) => {
     const latestProducts = await ProductModel.find({}, '-reviews')
       .sort({ _id: -1 })
-      .limit(10)
+      .limit(30)
     const featuredProducts = await ProductModel.find(
       {
         isFeatured: true,
       },
       '_id name banner slug'
-    ).limit(3)
+    ).limit(5)
     res.send({ latestProducts, featuredProducts })
   })
 )
