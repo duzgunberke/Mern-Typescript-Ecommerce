@@ -81,7 +81,7 @@ function App() {
                 {userInfo ? (
                   <NavDropdown
                     className="header-link"
-                    title={`Hello, ${userInfo.name}`}
+                    title={`Selam, ${userInfo.name}`}
                   >
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>Profil</NavDropdown.Item>
@@ -99,7 +99,7 @@ function App() {
                     </Link>
                   </NavDropdown>
                 ) : (
-                  <NavDropdown className="header-link" title={`Hello, sign in`}>
+                  <NavDropdown className="header-link" title={`Selam, giriş yapın`}>
                     <LinkContainer to="/signin">
                       <NavDropdown.Item>Giriş Yap</NavDropdown.Item>
                     </LinkContainer>
