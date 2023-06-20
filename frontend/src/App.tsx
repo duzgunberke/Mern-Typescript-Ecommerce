@@ -154,7 +154,7 @@ function App() {
               >
                 <i className="fas fa-bars"></i> Kategoriler
               </Link>
-              {['Bugüne Özel'].map((x) => (
+              {['Tüm Ürünler'].map((x) => (
                 <Link
                   key={x}
                   className="nav-link header-link p-1 px-3"
@@ -188,7 +188,7 @@ function App() {
               onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
             >
               <span>
-                {userInfo ? `Hello, ${userInfo.name}` : `Hello, sign in`}
+                {userInfo ? `Hoşgeldiniz, ${userInfo.name}` : `Selam, giriş yapın`}
               </span>
             </LinkContainer>
           </ListGroup.Item>

@@ -5,14 +5,14 @@ import { Product, ProductModel } from '../models/productModel'
 
 export const productRouter = express.Router()
 
-const PAGE_SIZE = 3
+const PAGE_SIZE = 10
 
 productRouter.get(
   '/',
   asyncHandler(async (req, res) => {
     const latestProducts = await ProductModel.find({}, '-reviews')
       .sort({ _id: -1 })
-      .limit(6)
+      .limit(10)
     const featuredProducts = await ProductModel.find(
       {
         isFeatured: true,
