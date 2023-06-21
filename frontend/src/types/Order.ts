@@ -14,6 +14,6 @@ export type Order = {
   orderItems: CartItem[]
   itemsPrice: number
   shippingPrice: number
-  taxPrice: number
+  // taxPrice: number
   totalPrice: number
 }

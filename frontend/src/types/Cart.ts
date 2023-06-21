@@ -23,7 +23,7 @@ export type ShippingAddress = {
 export type Cart = {
   itemsPrice: number
   shippingPrice: number
-  taxPrice: number
+  // taxPrice: number
   totalPrice: number
   cartItems: CartItem[]
   shippingAddress: ShippingAddress

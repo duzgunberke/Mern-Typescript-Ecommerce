@@ -69,7 +69,7 @@ export const useCreateOrderMutation = () =>
       paymentMethod: string
       itemsPrice: number
       shippingPrice: number
-      taxPrice: number
+      // taxPrice: number
       totalPrice: number
     }) =>
       (

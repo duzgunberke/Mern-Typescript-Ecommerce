@@ -25,8 +25,8 @@ export default function PlaceOrderPage() {
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
   )
   cart.shippingPrice = cart.itemsPrice > 100 ? round2(0) : round2(10)
-  cart.taxPrice = round2(0.15 * cart.itemsPrice)
-  cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
+  // cart.taxPrice = round2(0.15 * cart.itemsPrice)
+  cart.totalPrice = Number((cart.itemsPrice + cart.shippingPrice).toFixed(2));
 
   const { mutateAsync: createOrder, isLoading } = useCreateOrderMutation()
 
@@ -38,7 +38,7 @@ export default function PlaceOrderPage() {
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
+        // taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       })
       dispatch({ type: 'CART_CLEAR' })
@@ -131,12 +131,12 @@ export default function PlaceOrderPage() {
                     <Col>₺{cart.shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
-                <ListGroup.Item>
+                {/* <ListGroup.Item>
                   <Row>
                     <Col>Vergi</Col>
                     <Col>₺{cart.taxPrice.toFixed(2)}</Col>
                   </Row>
-                </ListGroup.Item>
+                </ListGroup.Item> */}
                 <ListGroup.Item>
                   <Row>
                     <Col>

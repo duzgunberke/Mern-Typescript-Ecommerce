@@ -79,7 +79,7 @@ export default function OrderPage() {
         try {
           payOrder({ orderId: orderId!, ...details })
           refetch()
-          toast.success('Order is paid')
+          toast.success('Sipariş ödemesi alındı')
         } catch (err) {
           toast.error(getError(err as ApiError))
         }
@@ -211,12 +211,12 @@ export default function OrderPage() {
                     <Col>₺{order.shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
-                <ListGroup.Item>
+                {/* <ListGroup.Item>
                   <Row>
                     <Col>Tax</Col>
                     <Col>₺{order.taxPrice.toFixed(2)}</Col>
                   </Row>
-                </ListGroup.Item>
+                </ListGroup.Item> */}
                 <ListGroup.Item>
                   <Row>
                     <Col>

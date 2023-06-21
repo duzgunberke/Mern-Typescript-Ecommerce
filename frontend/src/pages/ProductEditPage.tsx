@@ -75,7 +75,7 @@ export default function ProductEditPage() {
         countInStock,
         description,
       })
-      toast.success('Product updated successfully')
+      toast.success('Ürün başarıyla güncellendi')
       navigate('/admin/products')
     } catch (err) {
       toast.error(getError(err as ApiError))
@@ -107,7 +107,7 @@ export default function ProductEditPage() {
       if(forBanner){
         setBanner(data.secure_url)
       }
-      toast.success('Image uploaded successfully. click Update to apply it')
+      toast.success('Resim başarıyla yüklendi')
     } catch (err) {
       toast.error(getError(err as ApiError))
     }
@@ -115,7 +115,7 @@ export default function ProductEditPage() {
 
   const deleteFileHandler = async (fileName: string) => {
     setImages(images.filter((x) => x !== fileName))
-    toast.success('Image removed successfully. click Update to apply it')
+    toast.success('Resim başarıyla kaldırıldı')
   }
   return (
     <Container className="small-container">
@@ -146,12 +146,15 @@ export default function ProductEditPage() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="name">
+          <Form.Group className="mb-3" controlId="price">
             <Form.Label>Ücret</Form.Label>
-            <Form.Control
+            <input
+              type="number"
+              step="0.01"
               value={price}
-              onChange={(e) => setPrice(Number(e.target.value))}
+              onChange={(e) => setPrice(parseFloat(e.target.value))}
               required
+              className="form-control"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="image">

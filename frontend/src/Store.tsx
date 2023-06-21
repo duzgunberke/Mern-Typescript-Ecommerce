@@ -33,7 +33,7 @@ const initialState: AppState = {
       : 'PayPal',
     itemsPrice: 0,
     shippingPrice: 0,
-    taxPrice: 0,
+    // taxPrice: 0,
     totalPrice: 0,
   },
 }
@@ -101,7 +101,7 @@ function reducer(state: AppState, action: Action): AppState {
           },
           itemsPrice: 0,
           shippingPrice: 0,
-          taxPrice: 0,
+          // taxPrice: 0,
           totalPrice: 0,
         },
       }
