@@ -62,7 +62,6 @@ export default function ProductListPage() {
   const filteredProducts = data ? data.products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   ) : [];
-
   return (
     <div>
       <Row>
@@ -77,20 +76,6 @@ export default function ProductListPage() {
           </div>
         </Col>
       </Row>
-      <div>
-            {[...Array(data!.pages).keys()].map((x) => (
-              <Link
-                className={
-                  x + 1 === Number(data!.page) ? 'btn text-bold' : 'btn'
-                }
-                key={x + 1}
-                to={`/admin/products?page=${x + 1}`}
-              >
-                {x + 1}
-              </Link>
-            ))}
-          </div>
-
       <Row>
         <Col>
           <Form className="mb-3">
@@ -103,11 +88,8 @@ export default function ProductListPage() {
           </Form>
         </Col>
       </Row>
-    
-
       {loadingCreate && <LoadingBox></LoadingBox>}
       {loadingDelete && <LoadingBox></LoadingBox>}
-
 
       {isLoading ? (
         <LoadingBox></LoadingBox>
@@ -115,53 +97,65 @@ export default function ProductListPage() {
         <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
       ) : (
         <>
-          {filteredProducts.length === 0 && (
+            {filteredProducts.length === 0 && (
             <MessageBox variant="info">Aradığınız ürün bulunamadı.</MessageBox>
           )}
           {filteredProducts.length > 0 && (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Ürün Adı</th>
-                  <th>Ücreti</th>
-                  <th>Kategori</th>
-                  <th>Marka</th>
-                  <th>Aksiyonlar</th>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Ürün Adı</th>
+                <th>Ücreti</th>
+                <th>Kategori</th>
+                <th>Marka</th>
+                <th>Aksiyonlar</th>
+              </tr>
+            </thead>
+            <tbody>
+            {filteredProducts.map((product) => (
+                <tr key={product._id}>
+                  <td>{product._id}</td>
+                  <td>{product.name}</td>
+                  <td>{product.price}</td>
+                  <td>{product.category}</td>
+                  <td>{product.brand}</td>
+                  <td>
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => navigate(`/admin/product/${product._id}`)}
+                    >
+                      Güncelle
+                    </Button>
+                    &nbsp;
+                    <Button
+                      type="button"
+                      variant="light"
+                      onClick={() => deleteHandler(product._id)}
+                    >
+                      Sil
+                    </Button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {filteredProducts.map((product) => (
-                  <tr key={product._id}>
-                    <td>{product._id}</td>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{product.category}</td>
-                    <td>{product.brand}</td>
-                    <td>
-                      <Button
-                        type="button"
-                        variant="light"
-                        onClick={() => navigate(`/admin/product/${product._id}`)}
-                      >
-                        Güncelle
-                      </Button>
-                      &nbsp;
-                      <Button
-                        type="button"
-                        variant="light"
-                        onClick={() => deleteHandler(product._id)}
-                      >
-                        Sil
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+              ))}
+            </tbody>
+          </table>)}
+          <div>
+            {[...Array(data!.pages).keys()].map((x) => (
+              <Link
+                className={
+                  x + 1 === Number(data!.page) ? 'btn text-bold' : 'btn'
+                }
+                key={x + 1}
+                to={`/admin/products?page=${x + 1}`}
+              >
+                {x + 1}
+              </Link>
+            ))}
+          </div>
         </>
       )}
     </div>
-  );
+  )
 }
