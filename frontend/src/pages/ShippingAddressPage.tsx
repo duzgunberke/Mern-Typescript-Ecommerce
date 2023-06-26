@@ -76,13 +76,15 @@ export default function ShippingAddressPage() {
           <Form.Group className="mb-3" controlId="address">
             <Form.Label>Ayrıntılı Adres</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={3}
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="city">
-            <Form.Label>City</Form.Label>
+            <Form.Label>Şehir</Form.Label>
             <Form.Control
               value={city}
               onChange={(e) => setCity(e.target.value)}

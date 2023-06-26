@@ -35,8 +35,13 @@ uploadRouter.post(
         streamifier.createReadStream(req.file.buffer).pipe(stream)
       })
     }
-    const result = await streamUpload(req)
-    res.send(result)
+    
+    try {
+      const result = await streamUpload(req)
+      res.send(result)
+    } catch (error) {
+      console.log(error + "Hatasi alindi")
+    }
   }
 )
 

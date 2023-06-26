@@ -17,15 +17,15 @@ import {
 
 const prices = [
   {
-    name: '₺1 to ₺50',
+    name: '₺1 - ₺50',
     value: '1-50',
   },
   {
-    name: '₺51 to ₺200',
+    name: '₺51 - ₺200',
     value: '51-200',
   },
   {
-    name: '₺201 to ₺1000',
+    name: '₺201 - ₺1000',
     value: '201-1000',
   },
 ]
@@ -108,10 +108,10 @@ export default function SearchPage() {
         <Col md={3}>
           <h3>Kategori</h3>
           <div>
-            <ul>
-              <li>
+            <ul className="list-inline">
+              <li className="list-inline-item my-1">
                 <Link
-                  className={'all' === category ? 'text-bold' : ''}
+                  className={`btn ${'all' === category ? 'btn-primary' : 'btn-secondary'}`}
                   to={getFilterUrl({ category: 'all' })}
                 >
                   Hepsi
@@ -126,9 +126,9 @@ export default function SearchPage() {
                 </MessageBox>
               ) : (
                 categories!.map((c) => (
-                  <li key={c}>
+                  <li className="list-inline-item my-1" key={c}>
                     <Link
-                      className={c === category ? 'text-bold' : ''}
+                      className={`btn ${c === category ? 'btn-primary' : 'btn-secondary'}`}
                       to={getFilterUrl({ category: c })}
                     >
                       {c}
@@ -138,30 +138,28 @@ export default function SearchPage() {
               )}
             </ul>
           </div>
+
           <div>
-            <h3>Ücret</h3>
-            <ul>
-              <li>
-                <Link
-                  className={'all' === price ? 'text-bold' : ''}
-                  to={getFilterUrl({ price: 'all' })}
-                >
-                  Hepsi
-                </Link>
-              </li>
+          <h3 className="text-center">Ücret</h3>
+            <div className="btn-group d-flex justify-content-center">
+              <Link
+                className={`btn ${'all' === price ? 'btn-primary' : 'btn-secondary'}`}
+                to={getFilterUrl({ price: 'all' })}
+              >
+                Hepsi
+              </Link>
               {prices.map((p) => (
-                <li key={p.value}>
-                  <Link
-                    to={getFilterUrl({ price: p.value })}
-                    className={p.value === price ? 'text-bold' : ''}
-                  >
-                    {p.name}
-                  </Link>
-                </li>
+                <Link
+                  key={p.value}
+                  to={getFilterUrl({ price: p.value })}
+                  className={`btn ${p.value === price ? 'btn-primary' : 'btn-secondary'}`}
+                >
+                  {p.name}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
-          <div>
+          <div className='my-1'>
             <h3>Ortalama kullanıcı puanı</h3>
             <ul>
               {ratings.map((r) => (
@@ -170,7 +168,7 @@ export default function SearchPage() {
                     to={getFilterUrl({ rating: r.rating.toString() })}
                     className={`${r.rating}` === `${rating}` ? 'text-bold' : ''}
                   >
-                    <Rating caption={' & up'} rating={r.rating}></Rating>
+                    <Rating caption={' & üstü'} rating={r.rating}></Rating>
                   </Link>
                 </li>
               ))}
@@ -179,7 +177,7 @@ export default function SearchPage() {
                   to={getFilterUrl({ rating: 'all' })}
                   className={rating === 'all' ? 'text-bold' : ''}
                 >
-                  <Rating caption={' & up'} rating={0}></Rating>
+                  <Rating caption={' & üstü'} rating={0}></Rating>
                 </Link>
               </li>
             </ul>
