@@ -59,9 +59,10 @@ export default function ProductListPage() {
     refetch();
   }, [searchTerm, page]);
 
-  const filteredProducts = data ? data.products.filter((product) =>
+  const filteredProducts = data?.products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  ) : [];
+  ) || [];
+  
   return (
     <div>
       <Row>
@@ -76,6 +77,7 @@ export default function ProductListPage() {
           </div>
         </Col>
       </Row>
+
       <Row>
         <Col>
           <Form className="mb-3">
@@ -88,6 +90,20 @@ export default function ProductListPage() {
           </Form>
         </Col>
       </Row>
+
+      <div>
+          {data?.pages && [...Array(data.pages).keys()].map((x) => (
+            <Link
+              className={
+                x + 1 === Number(data.page) ? 'btn btn-primary active mx-1' : 'btn btn-light mx-1'
+              }
+              key={x + 1}
+              to={`/admin/products?page=${x + 1}`}
+            >
+              {x + 1}
+            </Link>
+          ))}
+      </div>
       {loadingCreate && <LoadingBox></LoadingBox>}
       {loadingDelete && <LoadingBox></LoadingBox>}
 
@@ -141,19 +157,6 @@ export default function ProductListPage() {
               ))}
             </tbody>
           </table>)}
-          <div>
-            {[...Array(data!.pages).keys()].map((x) => (
-              <Link
-                className={
-                  x + 1 === Number(data!.page) ? 'btn text-bold' : 'btn'
-                }
-                key={x + 1}
-                to={`/admin/products?page=${x + 1}`}
-              >
-                {x + 1}
-              </Link>
-            ))}
-          </div>
         </>
       )}
     </div>
