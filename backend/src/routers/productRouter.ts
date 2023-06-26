@@ -98,7 +98,7 @@ productRouter.get(
   asyncHandler(async (req: Request, res: Response) => {
     const { query } = req
     const page = Number(query.page || 1)
-    const pageSize = Number(query.pageSize) || 50
+    const pageSize = Number(query.pageSize) || 300
 
     const products = await ProductModel.find()
       .skip(pageSize * (page - 1))
@@ -108,7 +108,7 @@ productRouter.get(
       products,
       countProducts,
       page,
-      pages: Math.ceil(countProducts / 50),
+      pages: Math.ceil(countProducts / 300),
     })
   })
 )

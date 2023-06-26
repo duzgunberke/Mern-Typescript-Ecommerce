@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
@@ -14,6 +14,7 @@ import {
   useDeleteProductMutation,
   useGetAdminProdcutsQuery,
 } from '../hooks/productHooks'
+import { Form, FormControl } from 'react-bootstrap'
 
 export default function ProductListPage() {
   const navigate = useNavigate()
@@ -52,6 +53,15 @@ export default function ProductListPage() {
       }
     }
   }
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    refetch();
+  }, [searchTerm, page]);
+
+  const filteredProducts = data ? data.products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  ) : [];
 
   return (
     <div>
@@ -67,57 +77,7 @@ export default function ProductListPage() {
           </div>
         </Col>
       </Row>
-
-      {loadingCreate && <LoadingBox></LoadingBox>}
-      {loadingDelete && <LoadingBox></LoadingBox>}
-
-      {isLoading ? (
-        <LoadingBox></LoadingBox>
-      ) : error ? (
-        <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
-      ) : (
-        <>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Ürün Adı</th>
-                <th>Ücreti</th>
-                <th>Kategori</th>
-                <th>Marka</th>
-                <th>Aksiyonlar</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data!.products.map((product) => (
-                <tr key={product._id}>
-                  <td>{product._id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.category}</td>
-                  <td>{product.brand}</td>
-                  <td>
-                    <Button
-                      type="button"
-                      variant="light"
-                      onClick={() => navigate(`/admin/product/${product._id}`)}
-                    >
-                      Güncelle
-                    </Button>
-                    &nbsp;
-                    <Button
-                      type="button"
-                      variant="light"
-                      onClick={() => deleteHandler(product._id)}
-                    >
-                      Sil
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div>
+      <div>
             {[...Array(data!.pages).keys()].map((x) => (
               <Link
                 className={
@@ -130,8 +90,78 @@ export default function ProductListPage() {
               </Link>
             ))}
           </div>
+
+      <Row>
+        <Col>
+          <Form className="mb-3">
+            <FormControl
+              type="text"
+              placeholder="Ürün Ara"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </Form>
+        </Col>
+      </Row>
+    
+
+      {loadingCreate && <LoadingBox></LoadingBox>}
+      {loadingDelete && <LoadingBox></LoadingBox>}
+
+
+      {isLoading ? (
+        <LoadingBox></LoadingBox>
+      ) : error ? (
+        <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
+      ) : (
+        <>
+          {filteredProducts.length === 0 && (
+            <MessageBox variant="info">Aradığınız ürün bulunamadı.</MessageBox>
+          )}
+          {filteredProducts.length > 0 && (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Ürün Adı</th>
+                  <th>Ücreti</th>
+                  <th>Kategori</th>
+                  <th>Marka</th>
+                  <th>Aksiyonlar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredProducts.map((product) => (
+                  <tr key={product._id}>
+                    <td>{product._id}</td>
+                    <td>{product.name}</td>
+                    <td>{product.price}</td>
+                    <td>{product.category}</td>
+                    <td>{product.brand}</td>
+                    <td>
+                      <Button
+                        type="button"
+                        variant="light"
+                        onClick={() => navigate(`/admin/product/${product._id}`)}
+                      >
+                        Güncelle
+                      </Button>
+                      &nbsp;
+                      <Button
+                        type="button"
+                        variant="light"
+                        onClick={() => deleteHandler(product._id)}
+                      >
+                        Sil
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </>
       )}
     </div>
-  )
+  );
 }
