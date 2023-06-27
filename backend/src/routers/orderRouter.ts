@@ -76,13 +76,24 @@ orderRouter.post(
   isAuth,
   asyncHandler(async (req: Request, res: Response) => {
     if (req.body.orderItems.length === 0) {
-      res.status(400).send({ message: 'Cart is empty' })
+      res.status(400).send({ message: 'Cart is empty' });
     } else {
+      const orderItems = req.body.orderItems.map((x: Product) => ({
+        ...x,
+        product: x._id,
+      }));
+
+      // Ürünlerin stoktan düşürülmesi
+      for (const item of orderItems) {
+        const product = await ProductModel.findById(item.product);
+        if (product) {
+          product.countInStock -= item.quantity;
+          await product.save();
+        }
+      }
+
       const createdOrder = await OrderModel.create({
-        orderItems: req.body.orderItems.map((x: Product) => ({
-          ...x,
-          product: x._id,
-        })),
+        orderItems,
         shippingAddress: req.body.shippingAddress,
         paymentMethod: req.body.paymentMethod,
         itemsPrice: req.body.itemsPrice,
@@ -90,11 +101,13 @@ orderRouter.post(
         // taxPrice: req.body.taxPrice,
         totalPrice: req.body.totalPrice,
         user: req.user._id,
-      })
-      res.status(201).send({ message: 'Order Not Found', order: createdOrder })
+      });
+
+      res.status(201).send({ message: 'Order Not Found', order: createdOrder });
     }
   })
-)
+);
+
 
 orderRouter.get(
   '/:id',

@@ -54,6 +54,7 @@ export default function ProductListPage() {
     }
   }
   const [searchTerm, setSearchTerm] = useState('');
+  const [showZeroStock, setShowZeroStock] = useState(false);
 
   useEffect(() => {
     refetch();
@@ -62,7 +63,9 @@ export default function ProductListPage() {
   const filteredProducts = data?.products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   ) || [];
-  
+
+  const zeroStockProducts = showZeroStock ? filteredProducts.filter(product => product.countInStock === 0) : filteredProducts;
+
   return (
     <div>
       <Row>
@@ -90,20 +93,34 @@ export default function ProductListPage() {
           </Form>
         </Col>
       </Row>
-
       <div>
-          {data?.pages && [...Array(data.pages).keys()].map((x) => (
-            <Link
-              className={
-                x + 1 === Number(data.page) ? 'btn btn-primary active mx-1' : 'btn btn-light mx-1'
-              }
-              key={x + 1}
-              to={`/admin/products?page=${x + 1}`}
+        <Row>
+          <Col>
+        {data?.pages && [...Array(data.pages).keys()].map((x) => (
+          <Link
+            className={
+              x + 1 === Number(data.page) ? 'btn btn-primary active mx-1' : 'btn btn-light mx-1'
+            }
+            key={x + 1}
+            to={`/admin/products?page=${x + 1}`}
+          >
+            {x + 1}
+                </Link>
+              ))}
+          </Col>
+          <Col className="text-end">
+            <Button
+              type="button"
+              variant="danger"
+              onClick={() => setShowZeroStock(!showZeroStock)}
             >
-              {x + 1}
-            </Link>
-          ))}
+              Stokta Olmayan Ürünleri Göster
+            </Button>
+          </Col>
+        </Row>
       </div>
+
+
       {loadingCreate && <LoadingBox></LoadingBox>}
       {loadingDelete && <LoadingBox></LoadingBox>}
 
@@ -113,13 +130,13 @@ export default function ProductListPage() {
         <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
       ) : (
         <>
-            {filteredProducts.length === 0 && (
+            {zeroStockProducts.length === 0 && (
             <MessageBox variant="info">Aradığınız ürün bulunamadı.</MessageBox>
           )}
-          {filteredProducts.length > 0 && (
+          {zeroStockProducts.length > 0 && (
           <table className="table">
             <thead>
-              <tr>
+              <tr className="fs-5">
                 <th>ID</th>
                 <th>Ürün Adı</th>
                 <th>Ücreti</th>
@@ -129,8 +146,8 @@ export default function ProductListPage() {
               </tr>
             </thead>
             <tbody>
-            {filteredProducts.map((product) => (
-                <tr key={product._id}>
+            {zeroStockProducts.map((product) => (
+                <tr key={product._id} className={!product.countInStock ? 'bg-danger' : '' + "fw-bolder"}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
