@@ -64,7 +64,7 @@ export default function ProductListPage() {
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   ) || [];
 
-  const zeroStockProducts = showZeroStock ? filteredProducts.filter(product => product.countInStock === 0) : filteredProducts;
+  const zeroStockProducts = showZeroStock ? filteredProducts.filter(product => product.countInStock <= 0) : filteredProducts;
 
   return (
     <div>
@@ -147,7 +147,7 @@ export default function ProductListPage() {
             </thead>
             <tbody>
             {zeroStockProducts.map((product) => (
-                <tr key={product._id} className={!product.countInStock ? 'bg-danger' : '' + "fw-bolder"}>
+                <tr key={product._id} className={product.countInStock <= 0 ? 'bg-danger' : '' + "fw-bolder"}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>

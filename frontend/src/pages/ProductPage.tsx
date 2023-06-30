@@ -113,7 +113,9 @@ function ProductPage() {
                 numReviews={product.numReviews}
               ></Rating>
             </ListGroup.Item>
-            <ListGroup.Item>Fiyat : ₺{product!.price}</ListGroup.Item>
+            <ListGroup.Item>
+                <h3>Fiyat : ₺{product!.price.toFixed(2)}</h3>
+            </ListGroup.Item>
             <ListGroup.Item>
               <Row xs={1} md={2} className="g-2">
                 {[product.image, ...product.images].map((x) => (
@@ -145,7 +147,7 @@ function ProductPage() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Fiyat:</Col>
-                    <Col>₺{product!.price}</Col>
+                    <Col className='display-6'>₺{product!.price.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>

@@ -36,11 +36,12 @@ function ProductItem({ product }: { product: Product }) {
         <img src={product.image} className="card-img-top" alt={product.name} />
       </Link>
       <Card.Body>
-        <Link to={`/product/${product.slug}`}>
-          <Card.Title>{product.name}</Card.Title>
-        </Link>
+            <Link to={`/product/${product.slug}`} className="text-decoration-none text-dark ">
+        <h5>{product.name}</h5>
+      </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>₺{product.price}</Card.Text>
+        <Card.Text>
+          <h5>₺{product.price.toFixed(2)}</h5></Card.Text>
         {product.countInStock === 0 ? (
           <Button variant="light" disabled>
             Stokda Kalmadı

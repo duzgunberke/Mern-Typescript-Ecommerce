@@ -108,39 +108,41 @@ export default function SearchPage() {
         <Col md={3}>
           <h3>Kategori</h3>
           <div>
-            <ul className="list-inline">
-              <li className="list-inline-item my-1">
-                <Link
-                  className={`btn ${'all' === category ? 'btn-primary' : 'btn-secondary'}`}
-                  to={getFilterUrl({ category: 'all' })}
-                >
-                  Hepsi
-                </Link>
-              </li>
+              <ul className="list-inline">
+                <li className="list-inline-item my-1">
+                  <Link
+                    className={`btn ${'all' === category ? 'btn-primary' : 'btn-secondary'}`}
+                    to={getFilterUrl({ category: 'all' })}
+                  >
+                    Hepsi
+                  </Link>
+                </li>
 
-              {loadingCategories ? (
-                <LoadingBox />
-              ) : error ? (
-                <MessageBox variant="danger">
-                  {getError(errorCategories as ApiError)}
-                </MessageBox>
-              ) : (
-                categories!.map((c) => (
-                  <li className="list-inline-item my-1" key={c}>
-                    <Link
-                      className={`btn ${c === category ? 'btn-primary' : 'btn-secondary'}`}
-                      to={getFilterUrl({ category: c })}
-                    >
-                      {c}
-                    </Link>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
+                {loadingCategories ? (
+                  <LoadingBox />
+                ) : error ? (
+                  <MessageBox variant="danger">
+                    {getError(errorCategories as ApiError)}
+                  </MessageBox>
+                ) : (
+                  categories!.sort().map((c) => (
+                    <li className="list-inline-item my-1" key={c}>
+                      <Link
+                        className={`btn ${c === category ? 'btn-primary' : 'btn-secondary'}`}
+                        to={getFilterUrl({ category: c })}
+                      >
+                        {c}
+                      </Link>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </div>
+
+
 
           <div>
-          <h3 className="text-center">Ücret</h3>
+          <h3 className="text-center">Fiyat Aralığı</h3>
             <div className="btn-group d-flex justify-content-center">
               <Link
                 className={`btn ${'all' === price ? 'btn-primary' : 'btn-secondary'}`}
