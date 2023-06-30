@@ -92,22 +92,24 @@ export default function ShippingAddressPage() {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="postalCode">
-            <Form.Label>Postal Code</Form.Label>
+            <Form.Label>Sipariş Mesajınız</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={4}
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
-              required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="country">
             <Form.Label>Telefon</Form.Label>
             <Form.Control
+              placeholder='0123 456 78 99...'
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               required
             />
           </Form.Group>
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <Button
               id="chooseOnMap"
               type="button"
@@ -124,7 +126,7 @@ export default function ShippingAddressPage() {
             ) : (
               <div>No location</div>
             )}
-          </div>
+          </div> */}
 
           <div className="mb-3">
             <Button variant="primary" type="submit">

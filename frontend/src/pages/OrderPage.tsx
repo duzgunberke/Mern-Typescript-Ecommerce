@@ -129,11 +129,21 @@ export default function OrderPage() {
               <Card.Title>Teslimat</Card.Title>
               <Card.Text>
                 <strong>Adınız:</strong> {order!.shippingAddress.fullName} <br />
-                <strong>Address: </strong> {order.shippingAddress.address},
-                {order.shippingAddress.city}, {order.shippingAddress.postalCode}
-                ,{order.shippingAddress.country}
-                &nbsp;
-                {order.shippingAddress.location &&
+                      <Col>
+                <strong>Adres:</strong>
+              </Col>
+              <Col>
+                <ul className="list-unstyled">
+                  <li>{order.shippingAddress.address}</li>
+                  <li>{order.shippingAddress.city}</li>
+                  <hr/>
+                  <strong>Sipariş Notu ve Telefon:</strong>
+                  <li>📝 {order.shippingAddress.postalCode}</li>
+                  <li>📞 {order.shippingAddress.country}</li>
+                </ul>
+              </Col>
+                
+                {/* {order.shippingAddress.location &&
                   order.shippingAddress.location.lat && (
                     <a
                       target="_new"
@@ -141,7 +151,7 @@ export default function OrderPage() {
                     >
                       Haritada Gör
                     </a>
-                  )}
+                  )} */}
               </Card.Text>
               {order.isDelivered ? (
                 <MessageBox variant="success">

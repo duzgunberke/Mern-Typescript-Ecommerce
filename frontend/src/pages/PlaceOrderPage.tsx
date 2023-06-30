@@ -69,11 +69,17 @@ export default function PlaceOrderPage() {
               <Card.Title>Teslimat</Card.Title>
               <Card.Text>
                 <strong>Name:</strong> {cart.shippingAddress.fullName} <br />
-                <strong>Address: </strong> {cart.shippingAddress.address},
-                {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
-                {cart.shippingAddress.country}
+                <strong>Adres:</strong>
+                <ul className="list-unstyled">
+                  <li>{cart.shippingAddress.address}</li>
+                  <li>{cart.shippingAddress.city}</li>
+                  <hr/>
+                  <strong>Sipariş Notu ve Telefon:</strong>
+                  <li>📝{cart.shippingAddress.postalCode}</li>
+                  <li>📞{cart.shippingAddress.country}</li>
+                </ul>
               </Card.Text>
-              <Link to="/shipping">Edit</Link>
+              <Link to="/shipping">Düzenle</Link>
             </Card.Body>
           </Card>
 
