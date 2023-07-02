@@ -139,7 +139,7 @@ export default function OrderPage() {
                   <hr/>
                   <strong>Sipariş Notu ve Telefon:</strong>
                   <li>📝 {order.shippingAddress.postalCode}</li>
-                  <li>📞 {order.shippingAddress.country}</li>
+                  <li>📞<a className='text-decoration-none' href={'//wa.me/9'+order.shippingAddress.country}>{order.shippingAddress.country}</a> </li>
                 </ul>
               </Col>
                 
@@ -217,7 +217,7 @@ export default function OrderPage() {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
-                    <Col>Shipping</Col>
+                    <Col>Gönderim</Col>
                     <Col>₺{order.shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>

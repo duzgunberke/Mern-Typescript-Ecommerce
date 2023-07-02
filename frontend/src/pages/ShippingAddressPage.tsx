@@ -103,8 +103,10 @@ export default function ShippingAddressPage() {
           <Form.Group className="mb-3" controlId="country">
             <Form.Label>Telefon</Form.Label>
             <Form.Control
-              placeholder='0123 456 78 99...'
+              placeholder='05325678899 Şeklinde'
               value={country}
+              maxLength={11}
+              minLength={11}
               onChange={(e) => setCountry(e.target.value)}
               required
             />
