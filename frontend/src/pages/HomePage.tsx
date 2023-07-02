@@ -26,7 +26,7 @@ function HomePage() {
         <MessageBox variant="danger">{getError(error as ApiError)}</MessageBox>
       ) : (
         <>
-          <Carousel showThumbs={false} autoPlay>
+          <Carousel showThumbs={false} autoPlay infiniteLoop={true}>
             {data!.featuredProducts.map((product) => (
               <Link
                 key={product._id}
@@ -39,6 +39,7 @@ function HomePage() {
               </Link>
             ))}
           </Carousel>
+          <hr />
 
           <h1>Son Eklenen Ürünler</h1>
           <div className="products">
