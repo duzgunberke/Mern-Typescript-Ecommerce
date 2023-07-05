@@ -56,10 +56,11 @@ export default function ProfilePage() {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Telefon Numaranız</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             value={email}
+            placeholder='05327548787 Gibi..'
             onChange={(e) => setEmail(e.target.value)}
             required
           />

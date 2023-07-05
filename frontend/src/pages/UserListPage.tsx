@@ -47,7 +47,7 @@ export default function UserListPage() {
             <tr>
               <th>ID</th>
               <th>Adı Soyadı</th>
-              <th>Email</th>
+              <th>Telefon</th>
               <th>IS ADMIN</th>
               <th>Aksiyonlar</th>
             </tr>

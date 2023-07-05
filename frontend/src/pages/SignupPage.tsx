@@ -65,10 +65,11 @@ export default function SignupPage() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Telefon Numarası</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             required
+            placeholder='05327548787 Gibi..'
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>

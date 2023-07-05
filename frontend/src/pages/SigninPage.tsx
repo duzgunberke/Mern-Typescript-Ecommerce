@@ -54,9 +54,10 @@ export default function SigninPage() {
       <h1 className="my-3">Giriş Yap</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Telefon Numarası</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
+            placeholder='05327548787 Gibi..'
             required
             onChange={(e) => setEmail(e.target.value)}
           />

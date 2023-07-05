@@ -45,7 +45,7 @@ function HomePage() {
           <div className="products">
             <Row>
               {data!.latestProducts.map((product: Product) => (
-                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                <Col key={product.slug} xs={6} sm={6} md={4} lg={3} className="mb-3">
                   <ProductItem product={product}></ProductItem>
                 </Col>
               ))}
