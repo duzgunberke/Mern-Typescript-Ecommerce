@@ -165,6 +165,10 @@ function App() {
                   <span>Sepet</span>
                 </Link>
             </div>
+            <Link to="/search?category=Yemek" className="nav-link header-link p-0 d-flex align-items-center justify-content-center" style={{ height: '40px' }}>
+              <span>Yemek Siparişi</span>
+            </Link>
+
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </Navbar>
@@ -225,7 +229,7 @@ function App() {
           )}
         </ListGroup>
       </div>
-      <main style={{ marginTop: '150px' }}>
+      <main style={{ marginTop: '190px' }}>
         <Container fluid>
           <Outlet />
         </Container>
